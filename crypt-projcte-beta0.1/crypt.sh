@@ -6,7 +6,7 @@
 #    By: dnetto <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/19 21:41:40 by dnetto            #+#    #+#              #
-#    Updated: 2017/04/20 10:43:12 by dnetto           ###   ########.fr        #
+#    Updated: 2017/04/20 10:49:49 by dnetto           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 function echoc
@@ -111,7 +111,7 @@ elif [ $m -eq 1 ] ; then
 			else cat ${fichier} | openssl rsautl -encrypt -pubin -inkey ${key} -out file${nr}.crypt ; fi	
 		else echoc r "[ERROR 404 \"${fichier}\" or \"${key}\" not found]" && sleep 1; fi	
 	fi
-	sleep 10
+	sleep 0.5
 elif [ $m -eq 2 ] ; then
 	clear
 	echo "========================================================="
@@ -150,7 +150,7 @@ elif [ $m -eq 2 ] ; then
 			else cat ${fichier} | openssl rsautl -decrypt -inkey ${key} -out file${nr}.out ; fi	
 		else echoc r "[ERROR 404 \"${fichier}\" or \"${key}\" not found]" && sleep 1; fi	
 	fi
-	sleep 10
+	sleep 0.5
 
 elif [ $m -eq 5 ] ; then
 	clear
