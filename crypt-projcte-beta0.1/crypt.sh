@@ -48,10 +48,10 @@ if [ $m -eq 3 ] ; then
 	echo "========================================================="
 	echo "=============== ${c}Creation de la key RSA$e =================="
 	echo "=========================================================$v"
-	sleep 01
-	nr=00
+	sleep 0.5
+	nr=1
 	while [ -e mykey${nr}.pem ] ; do  nr=`expr $nr + 1`; done
-	if [ $nr -lt 10 ] && [ $nr -gt 0 ]; then openssl genrsa -out mykey0${nr}.pem 2048 ;
+	if [ ! -e mykey.pem ]; then openssl genrsa -out mykey.pem 2048 ;
 	else  openssl genrsa -out mykey${nr}.pem 2048 ; fi
 	echo "$e"
 	sleep 0.5
@@ -62,14 +62,14 @@ elif [ $m -eq 4 ] ; then
 	echo "========================================================="
 	echo "nom ou numero, exemple mykey${r}XX${e}.pem : \c" 
 	read key
-	nr=00
-	while [ -e pub${nr}.key ] ; do  nr=`expr $nr + 1`; done
+	nr=1
+	while [ -e pub${nr}.pem ] ; do  nr=`expr $nr + 1`; done
 	if [ -e mykey${key}.pem ] ; then
-		if [ $nr -lt 10 ] && [ $nr -gt 0 ] ; then openssl rsa -in mykey${key}.pem -pubout > pub0${nr}.key 
-		else openssl rsa -in mykey${key}.pem -pubout > pub${nr}.key ; fi 
+		if [ ! -e pub.pem ] ; then openssl rsa -in mykey${key}.pem -pubout > pub.pem 
+		else openssl rsa -in mykey${key}.pem -pubout > pub${nr}.pem ; fi 
 	elif [ -e ${key} ] ; then
-		if [ $nr -lt 10 ] && [ $nr -gt 0 ] ; then openssl rsa -in ${key} -pubout > pub0${nr}.key 
-		else openssl rsa -in ${key} -pubout > pub${nr}.key ; fi 
+		if [ -e pub.key ] ; then openssl rsa -in ${key} -pubout > pub.pem
+		else openssl rsa -in ${key} -pubout > pub${nr}.pem ; fi 
 	else echoc r "[error 404 \"${key}\" not found]";fi
 	sleep 0.5
 
@@ -79,7 +79,7 @@ elif [ $m -eq 1 ] ; then
 	echo "======================== ${c}Crypt${e} =========================="
 	echo "========================================================="
 	echo "=\t1-standar aes-256-cbc \t\t\t\t="
-	echo "=\t2-perso avec key ${c}[ex: pub${r}01${c}.key]${e}\t\t="
+	echo "=\t2-perso avec key ${c}[ex: pub${r}01${c}.pem]${e}\t\t="
 	#	echo "=\t(obs* pour une key perso entre le nom de la key)="
 	echo "========================================================="
 	echo "========================================================="
@@ -91,11 +91,11 @@ elif [ $m -eq 1 ] ; then
 		echo "======================== ${c}Crypt${e} =========================="
 		echo "========================================================="
 		read -p "Nom du fichier source : " fichier
-		nr=00
-		while [ -e file${nr}.crypt ] ; do  nr=`expr $nr + 1`; done
+		nr=1
+		while [ -e ${fichier}${nr}.crypt ] ; do  nr=`expr $nr + 1`; done
 		if [ -e ${fichier} ] ; then
-			if [ $nr -lt 10 ] && [ $nr -gt 0 ] ; then cat ${fichier} | openssl enc -aes-256-cbc -e -out file0${nr}.crypt 
-			else cat ${fichier} | openssl enc -aes-256-cbc -e -out file${nr}.crypt; fi	
+			if [ ! -e ${fichier}.crypt ] ; then cat ${fichier} | openssl enc -aes-256-cbc -e -out ${fichier}.crypt 
+			else cat ${fichier} | openssl enc -aes-256-cbc -e -out ${fichier}${nr}.crypt; fi	
 		else echoc r "[ERROR 404 \"${fichier}\" not found]" && sleep 0.5; fi
 		elif [ $r -eq 2 ] ; then 
 			clear 
@@ -103,12 +103,12 @@ elif [ $m -eq 1 ] ; then
 			echo "======================== ${c}Crypt${e} =========================="
 			echo "========================================================="
 			read -p "Nom du fichier source  : " fichier
-			read -p "fichier avec la key.pub: " key
-			nr=00
-			while [ -e file${nr}.crypt ] ; do  nr=`expr $nr + 1`; done
+			read -p "fichier avec la PubKey: " key
+			nr=1
+			while [ -e  ${fichier}${nr}.crypt ] ; do  nr=`expr $nr + 1`; done
 			if [ -e ${fichier} ] ; then
-				if [ $nr -lt 10 ] && [ $nr -gt 0 ] ; then cat ${fichier} | openssl rsautl -encrypt -pubin -inkey ${key} -out file0${nr}.crypt 
-			else cat ${fichier} | openssl rsautl -encrypt -pubin -inkey ${key} -out file${nr}.crypt ; fi	
+				if [ ! -e ${fichier}.crypt ]; then cat ${fichier} | openssl rsautl -encrypt -pubin -inkey ${key} -out ${fichier}.crypt 
+			else cat ${fichier} | openssl rsautl -encrypt -pubin -inkey ${key} -out ${fichier}${nr}.crypt ; fi	
 		else echoc r "[ERROR 404 \"${fichier}\" or \"${key}\" not found]" && sleep 1; fi	
 	fi
 	sleep 0.5
@@ -157,35 +157,21 @@ elif [ $m -eq 5 ] ; then
 	echo "========================================================="
 	echo "======================= DNETTO =========================="
 	echo "========================================================="
-	echo "=\t1-chifrer\t\t\t\t\t="
-	echo "=\t2-dechifrer\t\t\t\t\t="
-	echo "=\t3-gerer key RSA\t\t\t\t\t="
-	echo "=\t4-gerer key Public\t\t\t\t="
-	echo "=\t5-je suis null, faire un vulgaire .tar\t\t="
-	echo "=\t6-bah il faut aussi decompresser\t\t="
-	echo "=\t7-Quitter\t\t\t\t\t="
-	echo "========================================================="
+	echo "=\t1-retur menu\t\t\t\t\t="
+	echo "=\tsorry I'm off\t\t\t\t\t="
 	echo "========================================================="
 	echo "========================================================="
 	read m
-	echo 5
 elif [ $m -eq 6 ] ; then
 	clear
 	echo "========================================================="
 	echo "======================= DNETTO =========================="
 	echo "========================================================="
-	echo "=\t1-chifrer\t\t\t\t\t="
-	echo "=\t2-dechifrer\t\t\t\t\t="
-	echo "=\t3-gerer key RSA\t\t\t\t\t="
-	echo "=\t4-gerer key Public\t\t\t\t="
-	echo "=\t5-je suis null, faire un vulgaire .tar\t\t="
-	echo "=\t6-bah il faut aussi decompresser\t\t="
-	echo "=\t7-Quitter\t\t\t\t\t="
-	echo "========================================================="
+	echo "=\t1-retur menu\t\t\t\t\t="
+	echo "=\tsorry I'm off\t\t\t\t\t="
 	echo "========================================================="
 	echo "========================================================="
 	read m
-	echo 6
 elif [ $m -eq 7 ] ; then
 	clear
 	echo "========================================================="
@@ -193,7 +179,7 @@ elif [ $m -eq 7 ] ; then
 	echoc r "bye, bye!\c"
 	echo " $e======================="
 	echo "========================================================="
-	sleep 01
+	sleep 1
 	clear
 	exit
 else
