@@ -52,6 +52,7 @@ int		ft_isalnum(int c);
 int		ft_isprint(int c);
 int		ft_isnumeric(int c);
 int		ft_isascii(int c);
+int		ft_strlcat(char *dest, char *src, int nb);
 
 char	*ft_strmap(char const *s, char (*f)(char));
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
