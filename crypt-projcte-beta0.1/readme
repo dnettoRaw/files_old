@@ -1,0 +1,28 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    readme                                             :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: dnetto <marvin@42.fr>                      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2017/04/20 09:12:07 by dnetto            #+#    #+#              #
+#    Updated: 2017/04/20 09:20:01 by dnetto           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+=========== fr ==========
+
+cette executable est encore en beta,
+les options 5 et 6 sont off :C
+
+1 - penser a gerer des RSA et des pubkeys au meme temps
+
+obs* des que j'aurais du temps je vais faire une version 2.0
+========== br ==========
+
+esse executavel ainda esta em beta,
+as opcoes 5 e 6 estao off :C
+
+1 - pense em gerar as RSA e as pubkeys ao mesmo tempo
+
+obs* assim que eu tiver tempo eu farei uma versao 2.0
