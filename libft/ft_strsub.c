@@ -1,42 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dnetto <dnetto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/18 23:18:57 by dnetto            #+#    #+#             */
-/*   Updated: 2017/04/22 00:13:05 by dnetto           ###   ########.fr       */
+/*   Created: 2017/04/21 21:17:15 by dnetto            #+#    #+#             */
+/*   Updated: 2017/04/21 22:06:49 by dnetto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa(int nb)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	int		i;
-	long	t;
 	char	*res;
-
-	i = 1;
-	t = nb;
-	if (nb == -2147483648 || nb == 0)
-		return (nb == 0 ? ft_strdup("0") : ft_strdup("-2147483648"));
-	while (t /= 10)
-		i++;
-	if (!(res = (char *)malloc(sizeof(char) * ((nb < 0 ? ++i : i) + 1))))
+	
+	if (s == NULL || !(res = ft_memalloc(len + 1)))
 		return (NULL);
-	res[i--] = '\0';
-	if (nb < 0)
-	{
-		res[0] = '-';
-		nb *= -1;
-	}
-	while (nb)
-	{
-		res[i] = nb % 10 + '0';
-		nb = nb / 10;
-		i--;
-	}
+	ft_strncat(res, &((char*)s)[start], len);
 	return (res);
 }

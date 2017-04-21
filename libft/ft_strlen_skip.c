@@ -1,42 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_strlen_skip.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dnetto <dnetto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/18 23:18:57 by dnetto            #+#    #+#             */
-/*   Updated: 2017/04/22 00:13:05 by dnetto           ###   ########.fr       */
+/*   Created: 2017/04/22 00:17:45 by dnetto            #+#    #+#             */
+/*   Updated: 2017/04/22 01:04:55 by dnetto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa(int nb)
+int		ft_strlen_skip(char *str, char skip)
 {
-	int		i;
-	long	t;
-	char	*res;
+	int i;
+	int j;
 
-	i = 1;
-	t = nb;
-	if (nb == -2147483648 || nb == 0)
-		return (nb == 0 ? ft_strdup("0") : ft_strdup("-2147483648"));
-	while (t /= 10)
-		i++;
-	if (!(res = (char *)malloc(sizeof(char) * ((nb < 0 ? ++i : i) + 1))))
-		return (NULL);
-	res[i--] = '\0';
-	if (nb < 0)
-	{
-		res[0] = '-';
-		nb *= -1;
-	}
-	while (nb)
-	{
-		res[i] = nb % 10 + '0';
-		nb = nb / 10;
-		i--;
-	}
-	return (res);
+	i = -1;
+	j = 0;
+	while (str[++i])
+		if (!(str[i] == skip))
+		   j++;
+	return (j);
+}
+
+int 	ft_strlen_stp(char str)
+{
+
+}
+
+int		ft_strlen_tool(char *str, char c, int nbr)
+{
+	if (nbr == 0)
+		return(ft_strlen(str));
+	if (nbr == 1)
+		return(ft_strlen_skip(str, c));
+	if (nbr )
 }
