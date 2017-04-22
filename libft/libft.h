@@ -66,6 +66,7 @@ int		ft_isalnum(int c);
 int		ft_isprint(int c);
 int		ft_isnumeric(int c);
 int		ft_isascii(int c);
+int		ft_isesp(char c);
 int		ft_strlcat(char *dest, char *src, int nb);
 int		ft_toupper(int c);
 int		ft_tolower(int c);

@@ -18,32 +18,22 @@ char	**ft_strsplit(char const *s, char c)
 	int		i1;
 	int		i2;
 	int		len;
-	
-	i1 = -1;
+
+	i1 = 0;
 	i2 = 0;
-	res = ;
+	res = (char**)malloc(sizeof(char*) * ft_strlen_tool((char*)s, c, 3));
 	if (s == NULL || c == 0)
 		return (NULL);
-	while (s[++i1])
+	while (s[i1])
 	{
-		if (s[i1] != c)
-		{
-			len = ft_strlen_itstp(&((char*)s)[i1], c);
-			res[i2] = ft_strsub(s, i1, len);
-			i2++;
-			i1 = len - 1;
-		}
-		while (s[i1] == c);
+		while (s[i1] == c)
+			i1++;
+		len = ft_strlen_tool(&((char*)s)[i1], c, 2);
+		res[i2] = ft_strsub(s, i1, len);	
+		i2++;
+		while (s[i1] != c && s[i1])
+			i1++;
 	}
+	res[i2][0] = '\0';
 	return (res);
-}
-
-int main()
-{
-	char *s="zxcvbnm***abc**cd**";
-	char **tab=ft_strsplit(s, '*');
-	int i = -1;
-	
-	while (tab[++i])
-		printf ("n*%d : %s\n", i, tab[i]);
 }
