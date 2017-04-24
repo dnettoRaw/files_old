@@ -6,7 +6,7 @@
 /*   By: dnetto <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/11 20:41:47 by dnetto            #+#    #+#             */
-/*   Updated: 2017/04/22 00:25:18 by dnetto           ###   ########.fr       */
+/*   Updated: 2017/04/24 04:15:01 by dnetto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		ft_strnequ(char const *s1, char const *s2, size_t n);
 int		ft_longlimit(long nb);
 int		ft_strlen(char *str);
 int		ft_intlen(int nb);
-int		ft_strlen_tool(char *str, char c, int nbr);
+int		ft_strlen_tool(char *str, char c, int nb, int nbr);
 int		ft_intlimit(int nb);
 int		ft_atoi(char *str);
 int		ft_strcmp(char *s1, char *s2);
@@ -63,15 +63,16 @@ int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isnum(int c);
 int		ft_isalnum(int c);
+int		ft_isesp(char c);
 int		ft_isprint(int c);
 int		ft_isnumeric(int c);
 int		ft_isascii(int c);
-int		ft_isesp(char c);
 int		ft_strlcat(char *dest, char *src, int nb);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 
 char	**ft_strsplit(char const *s, char c);
+char	*ft_strtrim(const char *s);
 char	*ft_itoa(int nb);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);

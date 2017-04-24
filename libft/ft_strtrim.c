@@ -1,42 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dnetto <dnetto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/18 23:18:57 by dnetto            #+#    #+#             */
-/*   Updated: 2017/04/24 05:10:18 by dnetto           ###   ########.fr       */
+/*   Created: 2017/04/23 15:41:13 by dnetto            #+#    #+#             */
+/*   Updated: 2017/04/23 22:10:44 by dnetto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa(int nb)
+char	*ft_strtrim(const char *s)
 {
-	int		i;
-	long	t;
-	char	*res;
-
-	i = 1;
-	t = nb;
-	if (nb == -2147483648 || nb == 0)
-		return (nb == 0 ? ft_strdup("0") : ft_strdup("-2147483648"));
-	while (t /= 10)
-		i++;
-	if (!(res = (char *)malloc(sizeof(char) * ((nb < 0 ? ++i : i) + 1))))
-		return (NULL);
-	res[i--] = '\0';
-	if (nb < 0)
-	{
-		res[0] = '-';
-		nb *= -1;
-	}
-	while (nb)
-	{
-		res[i] = nb % 10 + '0';
-		nb = nb / 10;
-		i--;
-	}
-	return (res);
+	int start;
+	int l;
+	
+	if (s == NULL)
+		return (NULL);	
+	start = 0;
+	l = ft_strlen((char*)s) - 1;
+	while (ft_isesp(((char*)s)[start]))
+		start++;
+	while (ft_isesp(((char*)s)[l]) && l > 0)
+		l--;
+	return ((s[start]) ? ft_strsub(s, start, l - start + 1) : ft_strdup("\0"));
 }

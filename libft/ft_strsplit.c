@@ -6,34 +6,60 @@
 /*   By: dnetto <dnetto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 22:57:33 by dnetto            #+#    #+#             */
-/*   Updated: 2017/04/22 01:04:09 by dnetto           ###   ########.fr       */
+/*   Updated: 2017/04/24 05:10:22 by dnetto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include<stdio.h>
+# define A() printf("debug ok\n"); 
+int	ft_cnt_parts(const char *s, char c)
+{
+	int		cnt;
+	int		in_substring;
 
+	in_substring = 0;
+	cnt = 0;
+	while (*s != '\0')
+	{
+		if (in_substring == 1 && *s == c)
+			in_substring = 0;
+		if (in_substring == 0 && *s != c)
+		{
+			in_substring = 1;
+			cnt++;
+		}
+		s++;
+	}
+	return (cnt);
+}
 char	**ft_strsplit(char const *s, char c)
 {
 	char	**res;
-	int		i1;
-	int		i2;
 	int		len;
+	int 	i;
+	int		j;
 
-	i1 = 0;
-	i2 = 0;
-	res = (char**)malloc(sizeof(char*) * ft_strlen_tool((char*)s, c, 3));
-	if (s == NULL || c == 0)
+	i = 0;
+	j = 0;
+	if(!s)
+		return(NULL);
+	len = ft_cnt_parts((const char *)s, c);//ft_strlen_tool((char*)s, c, 0, 3) + 1;
+	if (!(res = (char**)malloc(sizeof(char*) * len)))
 		return (NULL);
-	while (s[i1])
+	while (s[i])
 	{
-		while (s[i1] == c)
-			i1++;
-		len = ft_strlen_tool(&((char*)s)[i1], c, 2);
-		res[i2] = ft_strsub(s, i1, len);	
-		i2++;
-		while (s[i1] != c && s[i1])
-			i1++;
+		A();
+		if (s[i] == c)
+			i += ft_strlen_tool(&((char*)s)[i], c, 2, 2);
+		if (s[i] != c)
+		{
+			len = ft_strlen_tool(&((char*)s)[i], c, 1, 2);
+			res[j] = ft_strsub(s, i, len);
+			i += len;
+			j++;
+		}
 	}
-	res[i2][0] = '\0';
+	res[len] = NULL;
 	return (res);
 }
