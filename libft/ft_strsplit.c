@@ -12,7 +12,7 @@
 
 #include "libft.h"
 #include<stdio.h>
-# define A() printf("debug ok\n"); 
+# define D(y,x) printf("debug ok, %s:%d\n", y, x); 
 int	ft_cnt_parts(const char *s, char c)
 {
 	int		cnt;
@@ -44,22 +44,26 @@ char	**ft_strsplit(char const *s, char c)
 	j = 0;
 	if(!s)
 		return(NULL);
-	len = ft_cnt_parts((const char *)s, c);//ft_strlen_tool((char*)s, c, 0, 3) + 1;
-	if (!(res = (char**)malloc(sizeof(char*) * len)))
+	len = ft_strlen_tool((char*)s, c, 0, 3);
+	D("len", len);
+	if (!(res = (char**)malloc(sizeof(char*) * len + 1)))
 		return (NULL);
 	while (s[i])
 	{
-		A();
 		if (s[i] == c)
 			i += ft_strlen_tool(&((char*)s)[i], c, 2, 2);
 		if (s[i] != c)
 		{
 			len = ft_strlen_tool(&((char*)s)[i], c, 1, 2);
 			res[j] = ft_strsub(s, i, len);
+			D(res[j], j);
 			i += len;
 			j++;
 		}
 	}
-	res[len] = NULL;
+	res[len + 1][0] = '\0';
+	i = 0;
+	while (res[i++])
+		D(res[i], i); 
 	return (res);
 }

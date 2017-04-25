@@ -48,7 +48,7 @@ int	 	ft_strlen_c(char *str, char stp, int dif)
 	return (i);
 }
 
-/*int		ft_strlen_mots(char *str, char esp, int k)
+int		ft_strlen_mots(char *str, char esp, int k)
 {
 	int i;
 	int mots;
@@ -76,7 +76,7 @@ int	 	ft_strlen_c(char *str, char stp, int dif)
 					i++;
 		}
 	return (mots);
-}*/
+}
 
 int		ft_strlen_tool(char *str, char c, int nb, int nbr)
 {	
@@ -94,20 +94,19 @@ int		ft_strlen_tool(char *str, char c, int nb, int nbr)
 #include<stdio.h>
 int main(int i, char **arg)
 {
-	i = 0;
-	char **str=ft_strsplit(arg[1], '*');
-//	printf ("ma phrase : \"%s\"\t\t c = \"%c\"\n", arg[1], *arg[2]);	
-//	printf ("\nnumero de letres : %d\n", ft_strlen_letres(arg[1], *arg[2]));	
-//	printf ("numero de mots : %d\n", ft_strlen_mots(arg[1], *arg[2], 0));
-//	printf ("numero de len : %d\n\n", ft_strlen(arg[1]));	
-//	printf ("numero de str++ != c : %d\n", ft_strlen_c(arg[1], *arg[2], 1));	
-//	printf ("numero de str++ == c : %d\n", ft_strlen_c(arg[1], *arg[2], 2));	
-//	printf ("numero de str-- != c : %d\n", ft_strlen_c(arg[1], *arg[2], 3));	
-//	printf ("numero de str-- == c : %d\n\n", ft_strlen_c(arg[1], *arg[2], 4));	
-while (str[i] != 0)
-	{
-		printf ("split ma phase : |%s|\n", str[i++]);	
-	}
+		i = 0;
+		char **str=ft_strsplit(arg[1], *arg[2]);
+	printf ("ma phrase : \"%s\"\t\t c = \"%c\"\n", arg[1], *arg[2]);	
+	printf ("\nnumero de letres : %d\n", ft_strlen_letres(arg[1], *arg[2]));
+	printf ("numero de mots : %d\n", ft_strlen_mots(arg[1], *arg[2], 0));
+	printf ("numero de len : %d\n\n", ft_strlen(arg[1]));	
+	printf ("numero de str++ != c : %d\n", ft_strlen_c(arg[1], *arg[2], 1));	
+	printf ("numero de str++ == c : %d\n", ft_strlen_c(arg[1], *arg[2], 2));	
+	printf ("numero de str-- != c : %d\n", ft_strlen_c(arg[1], *arg[2], 3));	
+	printf ("numero de str-- == c : %d\n\n", ft_strlen_c(arg[1], *arg[2], 4));	
+	while (str[i] != 0)
+		{
+			printf ("split ma phase : |%s|\n", str[i++]);	
+		}
 	return (0);
-	}:wq
-
+}
