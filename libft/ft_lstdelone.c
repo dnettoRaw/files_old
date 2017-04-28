@@ -6,7 +6,7 @@
 /*   By: dnetto <dnetto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 17:19:08 by dnetto            #+#    #+#             */
-/*   Updated: 2017/04/21 23:41:49 by dnetto           ###   ########.fr       */
+/*   Updated: 2017/04/26 01:53:44 by dnetto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
 {
-	(void)alst;
-	(void)del;
+	del((*alst)->content, (*alst)->content_size);
+	free(*alst);
+	*alst = NULL;
 }

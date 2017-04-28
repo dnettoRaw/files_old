@@ -6,13 +6,13 @@
 /*   By: dnetto <dnetto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 23:07:06 by dnetto            #+#    #+#             */
-/*   Updated: 2017/04/21 23:10:52 by dnetto           ###   ########.fr       */
+/*   Updated: 2017/04/26 02:57:07 by dnetto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_intlen(int nb)
+int		ft_intlen(long nb)
 {
 	int len;
 

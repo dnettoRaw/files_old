@@ -6,7 +6,7 @@
 /*   By: dnetto <dnetto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 21:17:15 by dnetto            #+#    #+#             */
-/*   Updated: 2017/04/24 05:08:23 by dnetto           ###   ########.fr       */
+/*   Updated: 2017/04/26 01:18:39 by dnetto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,16 @@
 
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	char	*res;
-	
-	if (!s || !(res = (char*)malloc(sizeof(char) * (len + 1)))
+	size_t	i;
+	char	*sub;
+
+	i = 0;
+	if (!s)
 		return (NULL);
-	ft_strncat(res, &((char*)s)[start], len);
-	return (res);
+	if (!(sub = (char *)ft_memalloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	while (i < len)
+		sub[i++] = s[start++];
+	sub[len] = '\0';
+	return (sub);
 }

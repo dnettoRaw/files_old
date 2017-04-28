@@ -6,7 +6,7 @@
 /*   By: dnetto <dnetto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 15:52:35 by dnetto            #+#    #+#             */
-/*   Updated: 2017/04/21 16:03:12 by dnetto           ###   ########.fr       */
+/*   Updated: 2017/04/25 18:29:21 by dnetto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_memdel(void **ap)
 {
-	if ( ap != NULL)
+	if (ap != NULL)
 	{
 		free(*ap);
 		*ap = NULL;

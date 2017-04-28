@@ -6,7 +6,7 @@
 /*   By: dnetto <dnetto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 17:28:40 by dnetto            #+#    #+#             */
-/*   Updated: 2017/04/21 23:40:43 by dnetto           ###   ########.fr       */
+/*   Updated: 2017/04/26 01:59:01 by dnetto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@ void	ft_lstadd(t_list **alst, t_list *new)
 	if (!(alst == NULL || new == NULL))
 	{
 		new->next = *alst;
-		*alst = new;	
+		*alst = new;
 	}
 }

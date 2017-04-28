@@ -6,7 +6,7 @@
 /*   By: dnetto <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/11 20:41:47 by dnetto            #+#    #+#             */
-/*   Updated: 2017/04/24 04:15:01 by dnetto           ###   ########.fr       */
+/*   Updated: 2017/04/28 13:15:09 by dnetto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,32 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
- 
+
+# include <stdio.h>
+
 struct	s_list
 {
-	void		*content;
-	size_t		content_size;
+	void			*content;
+	size_t			content_size;
 	struct s_list	*next;
 };
-typedef struct s_list t_list;
+typedef struct s_list	t_list;
+
+struct	s_tree
+{
+	int 			value;
+	struct s_tree	*tgauche;
+	struct s_tree	*tdroit;
+	int				parent;
+};
+typedef	struct s_tree	t_tree;
+
+t_tree	*ft_creer_tree(int nb);
+void	ft_creer_noeud(t_tree **arbre, int nb, int value);
+void	ft_effacer_tree(t_tree *arbre);
+void	ft_ajouterdata_tree(t_tree **arbre, int nb);
+void	ft_afficher_tree(t_tree *a);
+int		ft_contnoeud_tree(t_tree *a);
 
 void	*ft_memset(void *b, int c, size_t len);
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n);
@@ -47,13 +65,16 @@ void	*ft_memalloc(size_t size);
 void	ft_memdel(void **ap);
 void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void	ft_strdel(char **as);
+void	ft_lstadd(t_list **alst, t_list *new);
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t));
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 int		ft_strequ(char const *s1, char const *s2);
 int		ft_strnequ(char const *s1, char const *s2, size_t n);
 int		ft_longlimit(long nb);
 int		ft_strlen(char *str);
-int		ft_intlen(int nb);
+int		ft_intlen(long nb);
 int		ft_strlen_tool(char *str, char c, int nb, int nbr);
 int		ft_intlimit(int nb);
 int		ft_atoi(char *str);
