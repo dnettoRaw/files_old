@@ -6,7 +6,7 @@
 /*   By: dnetto <dnetto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/26 02:45:06 by dnetto            #+#    #+#             */
-/*   Updated: 2017/04/28 09:05:37 by dnetto           ###   ########.fr       */
+/*   Updated: 2017/04/29 16:26:09 by dnetto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static char		check_value(int i)
 	return (0);
 }
 
-long				ft_power(long p, int s)
+static long			ft_power(long p, int s)
 {
 	int len;
 	long res;

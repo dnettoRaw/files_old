@@ -6,7 +6,7 @@
 /*   By: dnetto <dnetto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/22 00:17:45 by dnetto            #+#    #+#             */
-/*   Updated: 2017/04/26 01:18:34 by dnetto           ###   ########.fr       */
+/*   Updated: 2017/04/29 15:48:47 by dnetto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int		ft_strlen_mots(char *str, char esp, int k)
 	i = -1;
 	mots = 0;
 	if (k == 1)
-		while (str[++i])
+		while (str[i++])
 		{
 			k = 0;
 			while (!(ft_isesp(str[i])) && str[i])

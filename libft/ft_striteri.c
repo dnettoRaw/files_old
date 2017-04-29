@@ -6,7 +6,7 @@
 /*   By: dnetto <dnetto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 01:30:53 by dnetto            #+#    #+#             */
-/*   Updated: 2017/04/19 01:42:35 by dnetto           ###   ########.fr       */
+/*   Updated: 2017/04/29 15:33:31 by dnetto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
 	int i;
 
-	i = -1;
+	i = 0;
 	if (s == NULL || f == NULL)
 		return ;
-	while (s[++i])
-		f(i, &s[i]);
+	while (s[i++])
+		f(i - 1, &s[i - 1]);
 }

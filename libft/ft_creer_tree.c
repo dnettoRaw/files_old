@@ -6,7 +6,7 @@
 /*   By: dnetto <dnetto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/28 09:39:50 by dnetto            #+#    #+#             */
-/*   Updated: 2017/04/28 12:08:36 by dnetto           ###   ########.fr       */
+/*   Updated: 2017/04/29 16:44:28 by dnetto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 t_tree	*ft_creer_tree(int nb)
 {
 	t_tree	*tmp;
-	
+
 	if (!(tmp = (t_tree*)malloc(sizeof(t_tree))))
 		return (NULL);
 	tmp->value = nb;
 	tmp->tgauche = NULL;
 	tmp->tdroit = NULL;
-	tmp->parent = 0;
+	tmp->parent = NULL;
 	return (tmp);
 }

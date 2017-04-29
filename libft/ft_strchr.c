@@ -6,7 +6,7 @@
 /*   By: dnetto <dnetto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 22:26:58 by dnetto            #+#    #+#             */
-/*   Updated: 2017/04/18 23:10:49 by dnetto           ###   ########.fr       */
+/*   Updated: 2017/04/29 15:21:03 by dnetto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ char	*ft_strchr(const char *s, int c)
 {
 	int i;
 
-	i = -1;
-	while (((char*)s)[++i])
-		if (((char*)s)[i] == c)
-			return (&((char*)s)[i]);
-	return ((((char*)s)[i] == c) ? &((char*)s)[i] : 0);
+	i = 0;
+	while (((char*)s)[++i - 1])
+		if (((char*)s)[i - 1] == c)
+			return (&((char*)s)[i - 1]);
+	return ((((char*)s)[i - 1] == c) ? &((char*)s)[i - 1] : 0);
 }

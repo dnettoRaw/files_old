@@ -6,7 +6,7 @@
 /*   By: dnetto <dnetto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 01:45:10 by dnetto            #+#    #+#             */
-/*   Updated: 2017/04/19 00:42:20 by dnetto           ###   ########.fr       */
+/*   Updated: 2017/04/29 15:13:55 by dnetto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ void	*ft_memmove(void *dst, const void *str, size_t len)
 
 	tmp1 = (unsigned char *)dst;
 	tmp2 = (unsigned char *)str;
-	i = -1;
+	i = 0;
 	if (dst > str)
 		while (len--)
 			tmp1[len] = tmp2[len];
 	else if (dst < str)
-		while (++i < len)
-			tmp1[i] = tmp2[i];
+		while (++i - 1 < len)
+			tmp1[i - 1] = tmp2[i - 1];
 	return (tmp1);
 }
