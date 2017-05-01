@@ -19,15 +19,15 @@ void	ft_afficher_tree(t_tree *a)
 	if (a->parent != NULL)
 	{
 		ft_putchar('(');
-		ft_putnbr(a->parent->value);
+		ft_putstr((char*)a->parent->value);
 		ft_putstr(") -> (");
-		ft_putnbr(a->value);
+		ft_putstr((char*)a->value);
 		ft_putstr(")\n");
 	}
 	else
 	{
 		ft_putchar('(');
-		ft_putnbr(a->value);
+		ft_putstr((char*)a->value);
 		ft_putstr(")\n");
 	}
 	if (a->tgauche != NULL)

@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void	ft_creer_noeud(t_tree **arbre, t_tree **parent, int value)
+void	ft_creer_noeud(t_tree **arbre, t_tree **parent, void *value)
 {
 	t_tree	*noeud;
 

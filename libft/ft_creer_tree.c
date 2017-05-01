@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-t_tree	*ft_creer_tree(int nb)
+t_tree	*ft_creer_tree(void *nb)
 {
 	t_tree	*tmp;
 

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ajouterdata_tree.c                              :+:      :+:    :+:   */
+/*   ft_tree_to_tab.c	                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dnetto <dnetto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,28 +11,32 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-
-void		ft_ajouterdata_tree(t_tree **arbre, void *nb)
+void		ft_ajuter(t_tree *arbre, char ***tab, int i, int len)
 {
-	if (*arbre == NULL)
-		ft_creer_noeud(arbre, NULL, nb);
-	else
+	if (arbre != NULL)	
 	{
-		if (ft_memcmp((*arbre)->value, nb, ft_strlen((char*)nb)) > 0)
-		{
-			ft_putstr("preimiere cas\n");	
-			if ((*arbre)->tgauche == NULL)
-				ft_creer_noeud(&(*arbre)->tgauche, &(*arbre), nb);
-			else
-				ft_ajouterdata_tree(&(*arbre)->tgauche, nb);
-		}
-		if (ft_memcmp((*arbre)->value, nb, ft_strlen((char*)nb)) < 0)
-		{
-			ft_putstr("duzieme cas\n");
-			if ((*arbre)->tdroit == NULL)
-				ft_creer_noeud(&(*arbre)->tdroit, &(*arbre), nb);
-			else
-				ft_ajouterdata_tree(&(*arbre)->tdroit, nb);
-		}
+		ft_ajuter(arbre->tgauche, &(*tab), i, --len);
+		printf("arbre value = %s\ti=%d\tlen=%d\n", arbre->value,++i,len);
+		ft_ajuter(arbre->tdroit, &(*tab), i, --len);
 	}
+}
+
+char		**ft_tree_to_tab(t_tree *arbre)
+{
+	char	**tab;
+	int	len;
+
+	if (arbre == NULL)
+		return (NULL);
+	len = ft_contnoeud_tree(arbre);
+	if (!(tab = (char**)malloc(sizeof(char*) * len + 1)))
+		return (NULL);
+	tab[len] = NULL;
+	ft_ajuter(arbre, &tab, 0, len);
+//printf("len de ma tab : %d\tarbre:%d\nstr=%s\n", ft_strlen(*tab), ft_contnoeud_tree(arbre), tab[0]);
+	int i = 0;
+
+	while (i++ < 3)
+		printf("abre[i]=%s\n", arbre[i].value);
+	return (tab);
 }

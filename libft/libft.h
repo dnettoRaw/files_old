@@ -29,17 +29,17 @@ typedef struct s_list	t_list;
 
 struct	s_tree
 {
-	int				value;
+	void				*value;
 	struct s_tree	*tgauche;
 	struct s_tree	*tdroit;
 	struct s_tree	*parent;
 };
 typedef	struct s_tree	t_tree;
 
-t_tree	*ft_creer_tree(int nb);
-void	ft_creer_noeud(t_tree **arbre, t_tree **parent, int value);
+t_tree	*ft_creer_tree(void *nb);
+void	ft_creer_noeud(t_tree **arbre, t_tree **parent, void *value);
 void	ft_effacer_tree(t_tree *arbre);
-void	ft_ajouterdata_tree(t_tree **arbre, int nb);
+void	ft_ajouterdata_tree(t_tree **arbre, void *nb);
 void	ft_afficher_tree(t_tree *a);
 int		ft_contnoeud_tree(t_tree *a);
 
