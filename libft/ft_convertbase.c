@@ -12,65 +12,46 @@
 
 #include "libft.h"
 
-static char		check_value(int i)
+#include <stdio.h>
+
+static char		ft_check(int i)
 {
 	if (i < 10)
 		return (i + 48);
-	if (i == 10)
+	else if (i == 10)
 		return ('a');
-	if (i == 11)
+	else if (i == 11)
 		return ('b');
-	if (i == 12)
+	else if (i == 12)
 		return ('c');
-	if (i == 13)
+	else if (i == 13)
 		return ('d');
-	if (i == 14)
+	else if (i == 14)
 		return ('e');
-	if (i == 15)
+	else if (i == 15)
 		return ('f');
 	return (0);
 }
 
-static long			ft_power(long p, int s)
+char			*ft_convertbase(unsigned int nb, int base)
 {
-	int len;
-	long res;
+	char	*res;
+	char	*c;
+	int	len;
+	int	i;
 
-	res = p;
-	if (s == 0)
-		return (0);
-	len = ft_intlen(p);
-	while (len > 0)
+	i = 0;
+	len = ft_intlen(nb);
+	c = (char*)malloc(sizeof(char) * 2);
+	c[1] = '\0';
+	printf("nb = %d\tbase =%d\tlen =%d\n",nb, base, len);
+	while (nb > 0)
 	{
-		res *= p;
-		len--;
+		c[0] = ft_check(nb % base);
+		res = ft_strjoin((char const*)res, (char const*)c);
+		nb /= base;
+		i++;
 	}
-	return (res);
-}
-
-char			*ft_convertbase(unsigned long i, int base)
-{
-	int				n;
-	int				u;
-	unsigned long	y;
-	char			*str;
-
-	y = i;
-	n = 0;
-	u = 0;
-	if (!i)
-		return (ft_itoa(0));
-	while (y >= 1)
-	{
-		y /= base;
-		n++;
-	}
-	str = (char *)malloc((n + 1) * sizeof(char));
-	ft_bzero(str, n + 1);
-	while (n--)
-	{
-		str[u++] = check_value(i / ft_power(base, n));
-		i = i % (unsigned long)ft_power(base, n);
-	}
-	return (str);
+	free(c);
+	return (ft_strrev(&res[ft_strlen(res) - i]));
 }

@@ -17,8 +17,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-# include <stdio.h>
-
 struct	s_list
 {
 	void			*content;
@@ -42,6 +40,7 @@ void	ft_effacer_tree(t_tree *arbre);
 void	ft_ajouterdata_tree(t_tree **arbre, void *nb);
 void	ft_afficher_tree(t_tree *a);
 int		ft_contnoeud_tree(t_tree *a);
+char	**ft_tree_to_tab(t_tree *arbre);
 
 void	*ft_memset(void *b, int c, size_t len);
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n);
@@ -109,6 +108,8 @@ char	*ft_strstr(char *str, const char *to_find);
 char	*ft_strncpy(char *dest, char *src, unsigned int n);
 char	*ft_strnstr(char *str, const char *to_find, size_t len);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+char	*ft_convertbase(unsigned int nb, int base);
+char	*ft_strrev(char *a);
 
 t_list	*ft_lstnew(void const *content, size_t content_size);
 #endif

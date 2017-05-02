@@ -11,32 +11,32 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-void		ft_ajuter(t_tree *arbre, char ***tab, int i, int len)
+
+static char		**ft_ajuter(t_tree *arbre, char **tab,int *i)
 {
 	if (arbre != NULL)	
 	{
-		ft_ajuter(arbre->tgauche, &(*tab), i, --len);
-		printf("arbre value = %s\ti=%d\tlen=%d\n", arbre->value,++i,len);
-		ft_ajuter(arbre->tdroit, &(*tab), i, --len);
+		ft_ajuter(arbre->tgauche, tab, &(*i));
+		tab[i[0]++] = arbre->value;
+		ft_ajuter(arbre->tdroit, tab, &(*i));
+		return (tab);
 	}
+		return (NULL);
 }
 
 char		**ft_tree_to_tab(t_tree *arbre)
 {
 	char	**tab;
 	int	len;
+	int	i;
 
+	i = 0;
 	if (arbre == NULL)
 		return (NULL);
 	len = ft_contnoeud_tree(arbre);
 	if (!(tab = (char**)malloc(sizeof(char*) * len + 1)))
 		return (NULL);
 	tab[len] = NULL;
-	ft_ajuter(arbre, &tab, 0, len);
-//printf("len de ma tab : %d\tarbre:%d\nstr=%s\n", ft_strlen(*tab), ft_contnoeud_tree(arbre), tab[0]);
-	int i = 0;
-
-	while (i++ < 3)
-		printf("abre[i]=%s\n", arbre[i].value);
+	tab = ft_ajuter(arbre, tab, &i);
 	return (tab);
 }

@@ -16,7 +16,7 @@ int		ft_intlen(long nb)
 {
 	int len;
 
-	len = 0;
+	len = 1;
 	while (nb /= 10)
 		len++;
 	return (len);

@@ -20,7 +20,6 @@ void		ft_ajouterdata_tree(t_tree **arbre, void *nb)
 	{
 		if (ft_memcmp((*arbre)->value, nb, ft_strlen((char*)nb)) > 0)
 		{
-			ft_putstr("preimiere cas\n");	
 			if ((*arbre)->tgauche == NULL)
 				ft_creer_noeud(&(*arbre)->tgauche, &(*arbre), nb);
 			else
@@ -28,7 +27,6 @@ void		ft_ajouterdata_tree(t_tree **arbre, void *nb)
 		}
 		if (ft_memcmp((*arbre)->value, nb, ft_strlen((char*)nb)) < 0)
 		{
-			ft_putstr("duzieme cas\n");
 			if ((*arbre)->tdroit == NULL)
 				ft_creer_noeud(&(*arbre)->tdroit, &(*arbre), nb);
 			else

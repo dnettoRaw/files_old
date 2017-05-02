@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrev.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dnetto <dnetto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dnetto <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/28 01:28:22 by dnetto            #+#    #+#             */
-/*   Updated: 2017/04/29 14:45:14 by dnetto           ###   ########.fr       */
+/*   Created: 2017/03/11 08:11:48 by dnetto            #+#    #+#             */
+/*   Updated: 2017/04/13 00:44:56 by dnetto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-int main(int i,char **argv)
+char	*ft_strrev(char *a)
 {
-	if (i < 2)
-		return (0);
-	i = 1;
+	int i;
+	int c;
 	char *res;
-
-	res = ft_convertbase((unsigned int)ft_atoi(argv[1]), ft_atoi(argv[2]));
-	printf("res = %s\n", res);
-	free(res);
-	return(0);
+		
+	c = ft_strlen(a);
+	i = 0;
+	if ((res = (char*)malloc((sizeof(char) * c + 1))) == NULL)
+		return (NULL);
+	c--;
+	while (c + 1 > 0)
+		res[i++] = a[c--];
+return (res);
 }
