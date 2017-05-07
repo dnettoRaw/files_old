@@ -6,7 +6,7 @@
 /*   By: dnetto <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 17:21:14 by dnetto            #+#    #+#             */
-/*   Updated: 2017/04/18 18:15:04 by dnetto           ###   ########.fr       */
+/*   Updated: 2017/05/03 06:53:05 by dnetto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_strnstr(char *str, const char *to_find, size_t n)
 	if (ft_strcmp(str, "") == 0)
 		return (NULL);
 	fin = ((str + n) - (len - 1));
-	while (&str[i] < fin && i < n)
+	while (str[i] && &str[i] < fin && i < n)
 	{
 		if (ft_strncmp(&str[i], (char *)to_find, len) == 0)
 			return (&str[i]);

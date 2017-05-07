@@ -6,7 +6,7 @@
 #    By: dnetto <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/11 08:45:07 by dnetto            #+#    #+#              #
-#*   Updated: 2017/04/29 16:43:14 by dnetto           ###   ########.fr       *#
+#*   Updated: 2017/05/03 09:50:30 by dnetto           ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ SRC=	ft_afficher_tree.c ft_contnoeud_tree.c ft_bzero.c\
 	ft_strnequ.c ft_strncpy.c ft_strncmp.c ft_strnew.c\
 	ft_strrchr.c ft_strnstr.c ft_strstr.c ft_strsub.c\
 	ft_strtrim.c ft_strsplit.c ft_swap.c ft_tolower.c\
-	ft_toupper.c ft_strlen_tool.c ft_tree_to_tab.c
+	ft_toupper.c ft_strlen_tool.c ft_tree_to_tab.c\
+	ft_power.c ft_strrev.c ft_lstmap.c
 OBJ= $(SRC:.c=.o)
 NO_COLOR=\x1b[0m
 OK_COLOR=\x1b[32;01m

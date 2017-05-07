@@ -6,7 +6,7 @@
 /*   By: dnetto <dnetto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 15:49:59 by dnetto            #+#    #+#             */
-/*   Updated: 2017/04/29 15:19:59 by dnetto           ###   ########.fr       */
+/*   Updated: 2017/05/02 18:26:56 by dnetto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 
 	i = 0;
 	while (++i - 1 < n)
-		if (((char*)s)[i - 1] == c)
-			return (&((char*)s)[i - 1]);
+		if (((unsigned char*)s)[i - 1] == (unsigned char)c)
+			return (&((unsigned char*)s)[i - 1]);
 	return (NULL);
 }

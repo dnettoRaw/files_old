@@ -6,7 +6,7 @@
 /*   By: dnetto <dnetto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 22:57:33 by dnetto            #+#    #+#             */
-/*   Updated: 2017/04/26 01:18:37 by dnetto           ###   ########.fr       */
+/*   Updated: 2017/05/03 09:36:46 by dnetto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ char	**ft_strsplit(char const *s, char c)
 	j = 0;
 	if (!s)
 		return (NULL);
-	len = ft_strlen_tool((char*)s, c, 0, 3) + 1;
-	if (!(res = (char**)malloc(sizeof(char*) * len)))
+	len = ft_strlen_tool((char*)s, c, 0, 3);
+	if (!(res = (char**)ft_memalloc(sizeof(char*) * (len + 1))))
 		return (NULL);
-	res[len - 1] = NULL;
+	res[len] = NULL;
 	while (s[i])
 	{
 		if (s[i] == c)

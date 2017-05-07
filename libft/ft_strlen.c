@@ -6,11 +6,13 @@
 /*   By: dnetto <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 01:03:50 by dnetto            #+#    #+#             */
-/*   Updated: 2017/04/18 21:10:10 by dnetto           ###   ########.fr       */
+/*   Updated: 2017/05/03 09:51:40 by dnetto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str)
+#include "libft.h"
+
+size_t	ft_strlen(char *str)
 {
 	char	*i;
 

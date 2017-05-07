@@ -6,13 +6,13 @@
 /*   By: dnetto <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/21 17:24:06 by dnetto            #+#    #+#             */
-/*   Updated: 2017/04/25 16:57:37 by dnetto           ###   ########.fr       */
+/*   Updated: 2017/05/02 16:15:17 by dnetto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long  ft_power(int nb, int exp)
+long	ft_power(int nb, int exp)
 {
 	unsigned long	res;
 

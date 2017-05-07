@@ -6,7 +6,7 @@
 /*   By: dnetto <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/11 20:41:47 by dnetto            #+#    #+#             */
-/*   Updated: 2017/04/29 16:01:58 by dnetto           ###   ########.fr       */
+/*   Updated: 2017/05/03 09:45:23 by dnetto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_list	t_list;
 
 struct	s_tree
 {
-	void				*value;
+	void			*value;
 	struct s_tree	*tgauche;
 	struct s_tree	*tdroit;
 	struct s_tree	*parent;
@@ -72,7 +72,7 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 int		ft_strequ(char const *s1, char const *s2);
 int		ft_strnequ(char const *s1, char const *s2, size_t n);
 int		ft_longlimit(long nb);
-int		ft_strlen(char *str);
+size_t	ft_strlen(char *str);
 int		ft_intlen(long nb);
 int		ft_strlen_tool(char *str, char c, int nb, int nbr);
 int		ft_intlimit(int nb);
@@ -87,9 +87,10 @@ int		ft_isesp(char c);
 int		ft_isprint(int c);
 int		ft_isnumeric(int c);
 int		ft_isascii(int c);
-int		ft_strlcat(char *dest, char *src, int nb);
+size_t	ft_strlcat(char *dest, char *src, size_t size);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
+long	ft_power(int nb, int exp);
 
 char	**ft_strsplit(char const *s, char c);
 char	*ft_strtrim(const char *s);
@@ -112,4 +113,5 @@ char	*ft_convertbase(unsigned int nb, int base);
 char	*ft_strrev(char *a);
 
 t_list	*ft_lstnew(void const *content, size_t content_size);
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 #endif

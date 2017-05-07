@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tree_to_tab.c	                                :+:      :+:    :+:   */
+/*   ft_tree_to_tab.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dnetto <dnetto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dnetto <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/28 06:44:14 by dnetto            #+#    #+#             */
-/*   Updated: 2017/04/29 16:26:20 by dnetto           ###   ########.fr       */
+/*   Created: 2017/05/02 23:34:24 by dnetto            #+#    #+#             */
+/*   Updated: 2017/05/02 23:35:50 by dnetto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char		**ft_ajuter(t_tree *arbre, char **tab,int *i)
+static char		**ft_ajuter(t_tree *arbre, char **tab, int *i)
 {
-	if (arbre != NULL)	
+	if (arbre != NULL)
 	{
 		ft_ajuter(arbre->tgauche, tab, &(*i));
-		tab[i[0]++] = arbre->value;
+		tab[(*i)++] = arbre->value;
 		ft_ajuter(arbre->tdroit, tab, &(*i));
 		return (tab);
 	}
-		return (NULL);
+	return (NULL);
 }
 
-char		**ft_tree_to_tab(t_tree *arbre)
+char			**ft_tree_to_tab(t_tree *arbre)
 {
 	char	**tab;
-	int	len;
-	int	i;
+	int		len;
+	int		i;
 
 	i = 0;
 	if (arbre == NULL)
