@@ -6,7 +6,7 @@
 /*   By: abeauvoi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/24 17:44:34 by abeauvoi          #+#    #+#             */
-/*   Updated: 2017/05/04 18:20:52 by abeauvoi         ###   ########.fr       */
+/*   Updated: 2017/05/07 20:59:52 by abeauvoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int				main(int ac, char **av)
 	t_list		*tetriminoes;
 	char		**map;
 	t_map_stats	stats;
+	int			i;
 
 	if (ac != 2)
 		ft_error(USAGE);
@@ -28,13 +29,14 @@ int				main(int ac, char **av)
 	stats.size = MAP_SIZE;
 	stats.letter = 'A';
 	stats.pos = 0;
+	i = -1;
 	map = ft_create_map();
 	while (ft_resolve(tetriminoes, map, &stats, 0) != SUCCESS)
 	{
-		map = ft_increase_map(map);
-		ft_lstincrement(tetriminoes);
+		ft_lstincrement(tetriminoes, 1);
 		++stats.size;
-	}
+		map = ft_increase_map(map);
+	};
 	ft_showmap(map);
 	ft_delmap(map, ft_strlen(map[0]));
 	ft_lstdel(&tetriminoes, ft_delcontent);

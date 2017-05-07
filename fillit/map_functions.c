@@ -6,7 +6,7 @@
 /*   By: abeauvoi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 13:39:40 by abeauvoi          #+#    #+#             */
-/*   Updated: 2017/05/04 13:39:46 by abeauvoi         ###   ########.fr       */
+/*   Updated: 2017/05/07 20:58:33 by abeauvoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char		**ft_create_map(void)
 	map[MAP_SIZE] = NULL;
 	while (++i < MAP_SIZE)
 		if (!(map[i] = ft_memset(ft_strnew(MAP_SIZE), '.', MAP_SIZE)))
-			return (ft_delmap(map, i));
+		return (ft_delmap(map, i));
 	return (map);
 }
 

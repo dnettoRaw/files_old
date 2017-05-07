@@ -6,13 +6,13 @@
 /*   By: abeauvoi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 13:35:26 by abeauvoi          #+#    #+#             */
-/*   Updated: 2017/05/04 19:42:05 by abeauvoi         ###   ########.fr       */
+/*   Updated: 2017/05/07 20:51:05 by abeauvoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	ft_lstincrement(t_list *list)
+void	ft_lstincrement(t_list *list, int value)
 {
 	int	*p;
 	int	i;
@@ -24,7 +24,7 @@ void	ft_lstincrement(t_list *list)
 			p = (int *)list->content;
 			while (++i < CONTENT_SIZE)
 				if (p[i] > 1)
-					++p[i];
+					p[i] += value;
 			list = list->next;
 		}
 }

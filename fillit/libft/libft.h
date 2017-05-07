@@ -6,7 +6,7 @@
 /*   By: abeauvoi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/11 18:54:46 by abeauvoi          #+#    #+#             */
-/*   Updated: 2017/05/04 17:49:28 by abeauvoi         ###   ########.fr       */
+/*   Updated: 2017/05/07 19:35:27 by abeauvoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,10 @@ typedef struct		s_list
 void				ft_lstadd(t_list **alst, t_list *new_elem);
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
+
 # define FT_LSTNEW_ALLOC TRUE
 # define FT_LSTNEW_NO_ALLOC FALSE
+
 t_list				*ft_lstnew(void *content, size_t content_size, int mode);
 void				ft_lstiter(t_list *list, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *list, t_list *(*f)(t_list *elem));

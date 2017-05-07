@@ -6,13 +6,13 @@
 #    By: abeauvoi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/24 18:03:09 by abeauvoi          #+#    #+#              #
-#*   Updated: 2017/05/05 01:01:52 by dnetto           ###   ########.fr       *#
+#    Updated: 2017/05/07 19:54:54 by abeauvoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= fillit
 
-CFLAGS		= -Wall -Wextra -Werror -g
+CFLAGS		= -Wall -Wextra -Werror
 
 SRCS		= main.c \
 			  ft_check_buf_1.c \

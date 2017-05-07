@@ -6,12 +6,11 @@
 /*   By: abeauvoi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/01 20:47:33 by abeauvoi          #+#    #+#             */
-/*   Updated: 2017/05/05 01:22:36 by dnetto           ###   ########.fr       */
+/*   Updated: 2017/05/07 21:12:20 by abeauvoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
 static t_bool	found_empty_block(t_list *tetrimino, char **map,
 		t_map_stats *stats, int pos)
@@ -28,7 +27,7 @@ static t_bool	found_empty_block(t_list *tetrimino, char **map,
 		line = pos / stats->size;
 		pos += p[row];
 		if ((p[row] == 1 && line != pos / stats->size)
-			|| (p[row] > 1 && line == pos / stats->size))
+				|| (p[row] > 1 && line == pos / stats->size))
 			return (FALSE);
 		line = pos / stats->size;
 		col = pos % stats->size;
@@ -38,13 +37,13 @@ static t_bool	found_empty_block(t_list *tetrimino, char **map,
 	return (TRUE);
 }
 
-static void	ft_add_tetrimino(t_list *tetrimino, char **map,
+static void		ft_add_tetrimino(t_list *tetrimino, char **map,
 		t_map_stats *stats, int mode)
 {
-	int		line;
-	int		col;
-	int		*p;
-	int		row;
+	int			line;
+	int			col;
+	int			*p;
+	int			row;
 
 	row = -1;
 	line = stats->pos / stats->size;
@@ -74,42 +73,39 @@ static int		ft_sum_content(t_list *tetrimino)
 	return (res);
 }
 
-static t_bool	valid_pos(t_list *tetrimino, t_map_stats *stats, int pos)
+static t_bool	valid_pos(t_list *tetrimino, char **map,
+		t_map_stats *stats, int pos)
 {
-	return (pos <= ft_pow(stats->size, 2) - ft_sum_content(tetrimino) + 1 ?
-			TRUE : FALSE);
-}
-
-int			ft_resolve(t_list *tetrimino, char **map, t_map_stats *stats,
-		int pos)
-{
-	int		line;
-	int		col;
+	int			line;
+	int			col;
 
 	line = pos / stats->size;
 	col = pos % stats->size;
+	return ((pos <= ft_pow(stats->size, 2) - ft_sum_content(tetrimino) - 1)
+			&& map[line][col] == EMPTY ?
+			TRUE : FALSE);
+}
+
+int				ft_resolve(t_list *tetrimino, char **map, t_map_stats *stats,
+		int pos)
+{
 	if (!tetrimino)
 		return (SUCCESS);
-	if (pos >= 15)
-		return (FAILURE);
-	printf("pos = %d ;map[line=%d][col=%d]=%c\n",pos,line,col,map[line][col]);
-	printf("stats pos %d\n", stats->pos);
-	if (map[line][col] != EMPTY
-		|| (map[line][col] == EMPTY && valid_pos(tetrimino, stats, pos)
-			&& !found_empty_block(tetrimino, map, stats, pos)))
-		return (ft_resolve(tetrimino, map, stats, pos + 1));
-	if (valid_pos(tetrimino, stats, pos)
-			&& found_empty_block(tetrimino, map, stats, pos))
+	if (found_empty_block(tetrimino->next, map, stats, pos))
+		return (ft_resolve(tetrimino->next, map, stats, pos));
+	else if (valid_pos(tetrimino, map, stats, pos) &&
+			found_empty_block(tetrimino, map, stats, pos))
 	{
 		stats->pos = pos;
 		ft_add_tetrimino(tetrimino, map, stats, FILL);
 		++stats->letter;
-		if (ft_resolve(tetrimino->next, map, stats, pos + 1) == SUCCESS)
+		if (ft_resolve(tetrimino->next, map, stats, 0) == SUCCESS)
 			return (SUCCESS);
+		if (stats->letter > 'A')
+			--stats->letter;
+		stats->pos = pos;
+		ft_add_tetrimino(tetrimino, map, stats, CLEAR);
 	}
-	if (stats->letter > 'A')
-		--stats->letter;
-	stats->pos = pos;
-	ft_add_tetrimino(tetrimino, map, stats, CLEAR);
-	return (FAILURE);
+	return ((pos > ft_pow(stats->size, 2) - ft_sum_content(tetrimino) - 1) ?
+			FAILURE : ft_resolve(tetrimino, map, stats, pos + 1));
 }

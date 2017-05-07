@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abeauvoi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/24 21:17:51 by abeauvoi          #+#    #+#             */
-/*   Updated: 2017/05/01 20:24:25 by abeauvoi         ###   ########.fr       */
+/*   Created: 2017/05/07 19:39:39 by abeauvoi          #+#    #+#             */
+/*   Updated: 2017/05/07 20:06:55 by abeauvoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,10 @@ static void	first_read(t_list **alst, int fd)
 	char	buf[BUF_SIZE];
 
 	ft_bzero(buf, BUF_SIZE);
-	(void)read(fd, buf, BUF_SIZE - 2);
+	read(fd, buf, BUF_SIZE - 2);
 	if (!(comb = ft_check_buf(buf, TRUE)))
 		wrong_event(alst, fd, ERR);
-	ft_lstpush(alst, ft_lstnew(comb, CONTENT_SIZE * sizeof(int),
-				FT_LSTNEW_ALLOC));
+	ft_lstpush(alst, ft_lstnew(comb, 3 * sizeof(int), 1));
 	free(comb);
 }
 
@@ -49,8 +48,7 @@ t_list		*ft_get_tetriminoes(int fd)
 	{
 		if (!(comb = ft_check_buf(buf, FALSE)))
 			wrong_event(&tetriminoes, fd, ERR);
-		ft_lstpush(&tetriminoes, ft_lstnew(comb, CONTENT_SIZE * sizeof(int),
-					FT_LSTNEW_ALLOC));
+		ft_lstpush(&tetriminoes, ft_lstnew(comb, 3 * sizeof(int), 1));
 		ft_bzero(buf, BUF_SIZE);
 		free(comb);
 	}

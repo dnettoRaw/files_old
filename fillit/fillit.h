@@ -6,13 +6,13 @@
 /*   By: abeauvoi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/24 18:01:02 by abeauvoi          #+#    #+#             */
-/*   Updated: 2017/05/04 18:21:33 by abeauvoi         ###   ########.fr       */
+/*   Updated: 2017/05/07 20:58:08 by abeauvoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
-# include "libft.h"
+# include "./libft/libft.h"
 # define USAGE "Usage: ./fillit path/to/input_file"
 # define ERR "error"
 # define MAX_PIECES 26
@@ -44,6 +44,7 @@
 */
 
 # define MAP_SIZE 4
+# define MAX_STEP 4
 # define EMPTY '.'
 # define FILL 1
 # define CLEAR -1
@@ -99,6 +100,6 @@ int				ft_resolve(t_list *tetrimino, char **map, t_map_stats *stats,
 ** list_functions.c
 */
 
-void			ft_lstincrement(t_list *list);
+void			ft_lstincrement(t_list *list, int value);
 
 #endif
