@@ -6,7 +6,7 @@
 /*   By: abeauvoi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/24 18:01:02 by abeauvoi          #+#    #+#             */
-/*   Updated: 2017/05/07 20:58:08 by abeauvoi         ###   ########.fr       */
+/*   Updated: 2017/05/10 16:01:04 by abeauvoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@
 ** Map-related macros & variables
 */
 
-# define MAP_SIZE 4
+# define INITIAL_MAP_SIZE 3
+# define MAP_STATS_FIELDS 2
+# define POS 0
+# define SIZE 1
 # define MAX_STEP 4
 # define EMPTY '.'
 # define FILL 1
@@ -52,13 +55,6 @@
 /*
 ** Definitions & Typedefs
 */
-
-typedef struct	s_map_stats
-{
-	int			pos;
-	int			size;
-	char		letter;
-}				t_map_stats;
 
 int				ft_int_tab_cmp(int *a, int *b);
 t_list			*ft_get_tetriminoes(int fd);
@@ -90,11 +86,12 @@ int				ft_get_height(t_list *tetrimino);
 int				ft_get_width(t_list *tetrimino);
 
 /*
-** ft_resolve.c
+** ft_resolve(_2).c
 */
 
-int				ft_resolve(t_list *tetrimino, char **map, t_map_stats *stats,
+int				ft_resolve(t_list *tetrimino, char **map, int *stats,
 		int pos);
+t_bool			valid_step(int *comb, int row, int prev_line, int *stats);
 
 /*
 ** list_functions.c

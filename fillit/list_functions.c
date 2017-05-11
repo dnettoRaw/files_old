@@ -6,7 +6,7 @@
 /*   By: abeauvoi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 13:35:26 by abeauvoi          #+#    #+#             */
-/*   Updated: 2017/05/07 20:51:05 by abeauvoi         ###   ########.fr       */
+/*   Updated: 2017/05/10 00:07:29 by abeauvoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,14 @@ void	ft_lstincrement(t_list *list, int value)
 			i = -1;
 			p = (int *)list->content;
 			while (++i < CONTENT_SIZE)
+			{
+				if (value == -1 && p[i] == 2)
+					p[i] = -2;
 				if (p[i] > 1)
 					p[i] += value;
+				if (value > 0 && p[i] == -2)
+					p[i] = 2;
+			}
 			list = list->next;
 		}
 }

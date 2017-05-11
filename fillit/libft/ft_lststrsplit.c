@@ -6,7 +6,7 @@
 /*   By: abeauvoi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 18:45:08 by abeauvoi          #+#    #+#             */
-/*   Updated: 2017/05/02 16:40:50 by abeauvoi         ###   ########.fr       */
+/*   Updated: 2017/05/09 23:41:17 by abeauvoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_list			*ft_lststrsplit(const char *s, char c)
 			++i;
 		ft_lstpush(&lst,
 				ft_lstnew((void *)ft_strsub(s, i, ft_word_len(s + i, c)),
-					ft_word_len(s + i, c), FT_LSTNEW_ALLOC));
+					ft_word_len(s + i, c), 0));
 		while (s[i] && s[i] != c)
 			++i;
 	}
