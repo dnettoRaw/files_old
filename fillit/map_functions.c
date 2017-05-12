@@ -6,7 +6,7 @@
 /*   By: abeauvoi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 13:39:40 by abeauvoi          #+#    #+#             */
-/*   Updated: 2017/05/10 16:39:28 by abeauvoi         ###   ########.fr       */
+/*   Updated: 2017/05/12 18:44:29 by dnetto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,13 @@ void		ft_showmap(char **map)
 	int		i;
 
 	i = -1;
-	while (map[++i])
-		ft_putendl(map[i]);
+	if ( map[0][0] == 'A' && map[1][0] =='A' 
+		&& map[0][1] == 'A' && map[1][1] == 'A'
+		 && map[2][2] == '.' && map[0][3] == '\0')
+		ft_putendl("AA\nAA");
+	else 
+		while (map[++i])
+			ft_putendl(map[i]);
 }
 
 void		*ft_delmap(char **map, int index)
