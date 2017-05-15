@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dnetto <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/11 15:36:16 by dnetto            #+#    #+#             */
-/*   Updated: 2017/05/13 22:43:36 by dnetto           ###   ########.fr       */
+/*   Updated: 2017/05/15 15:21:23 by dnetto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <unistd.h>
-#include <fcntl.h>
-#include <sys/types.h>
-#include <sys/uio.h>
 
-static int	ft_check_static(char **stock, char **line)
+static int		ft_check_static(char **stock, char **line)
 {
-	char  *tmp;
-	
+	char		*tmp;
+
 	tmp = NULL;
 	if (*stock)
 	{
@@ -33,11 +29,11 @@ static int	ft_check_static(char **stock, char **line)
 	return (0);
 }
 
-static int	ft_read(int fd, char **stock, char **str)
+static int		ft_read(int fd, char **stock, char **str)
 {
-	int		ret;
-	char	buf[BUFF_SIZE + 1];
-	char	*tmp;
+	int			ret;
+	char		buf[BUFF_SIZE + 1];
+	char		*tmp;
 
 	while ((ret = read(fd, buf, BUFF_SIZE)))
 	{
@@ -56,14 +52,14 @@ static int	ft_read(int fd, char **stock, char **str)
 	return (0);
 }
 
-int			get_next_line(const int fd, char **line)
+int				get_next_line(const int fd, char **line)
 {
-	static char	*gnl[FD_SETSIZE];
+	static char	*gnl[FD_VL];
 	int			res;
 	char		test_read[BUFF_SIZE];
 
-	if (fd < 0 || !line ||( read(fd, test_read, 0) < 0))
-	   return (-1);
+	if (fd < 0 || !line || (read(fd, test_read, 0) < 0))
+		return (-1);
 	if (gnl[fd] && ft_check_static(&gnl[fd], line))
 		return (1);
 	res = ft_read(fd, &gnl[fd], line);
