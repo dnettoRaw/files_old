@@ -6,7 +6,7 @@
 /*   By: dnetto <dnetto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/10 12:33:45 by dnetto            #+#    #+#             */
-/*   Updated: 2017/05/12 19:07:10 by dnetto           ###   ########.fr       */
+/*   Updated: 2017/05/13 19:15:15 by dnetto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int main(int ac, char **av)
                 puts(line);
                 // ft_putstr(line);
                 free(line);
-            }
+             }
             if (ret < 0){
                 printf("/\e[1;31m!\e[0m\\ error reading '%s'\n", av[1]);
             }
