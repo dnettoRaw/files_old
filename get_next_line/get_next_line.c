@@ -6,7 +6,7 @@
 /*   By: dnetto <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/11 15:36:16 by dnetto            #+#    #+#             */
-/*   Updated: 2017/05/15 19:27:31 by dnetto           ###   ########.fr       */
+/*   Updated: 2017/05/17 11:56:48 by dnetto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,12 @@ static int		ft_check_static(char **static_, char **line)
 
 	tmp = NULL;
 	if (*static_)
-	{
 		if ((tmp = ft_strchr((const char*)*static_, '\n')))
 		{
 			*line = ft_strsub((const char*)*static_, 0, tmp - *static_);
 			ft_memmove(*static_, tmp + 1, ft_strlen(tmp));
 			return (1);
 		}
-	}
 	return (0);
 }
 
@@ -41,7 +39,7 @@ static int		ft_read(int fd, char **static_, char **str)
 		tmp = *static_;
 		if (*static_)
 		{
-			*static_ = ft_strjoin((char const*)tmp, (char const*)buf);
+			*static_ = ft_strjoin((const char*)tmp, (const char*)buf);
 			free(tmp);
 		}
 		else

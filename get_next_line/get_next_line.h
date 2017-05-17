@@ -6,7 +6,7 @@
 /*   By: dnetto <dnetto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/10 11:59:21 by dnetto            #+#    #+#             */
-/*   Updated: 2017/05/15 19:27:38 by dnetto           ###   ########.fr       */
+/*   Updated: 2017/05/17 11:55:56 by dnetto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 # include <sys/uio.h>
 # include <unistd.h>
 # define FD_VL 65636
-# define BUFF_SIZE  32
+
+# define BUFF_SIZE  1
 
 int	get_next_line(const int fd, char **line);
 
